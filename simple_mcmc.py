@@ -17,7 +17,7 @@ def swap_state(state, idx):
     swapped_state[idx] *= -1
     return swapped_state
 
-def mc_step(theta, state, idx):
+def step(theta, state, idx):
     new_state = swap_state(state, idx)
     old_p = calc_p(theta, state)
     new_p = calc_p(theta, new_state)
@@ -48,10 +48,10 @@ def main():
     state = [1, 1, 1] # Initial state
     idx = 0 # Index to swap
 
-    for step in range(num_step):
+    for n in range(num_step):
         idx = cycle_index(idx)
-        state = mc_step(theta, state, idx)
-        print_state(step, state)
+        state = step(theta, state, idx)
+        print_state(n, state)
 
 if __name__ == '__main__':
     main()
